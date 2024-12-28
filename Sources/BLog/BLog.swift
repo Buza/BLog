@@ -5,7 +5,7 @@ public struct BLog {
     private let logger: Logger
     private let prefix: String
     
-    init(subsystem: String, category: String, prefix: String) {
+    public init(subsystem: String, category: String, prefix: String) {
         self.logger = Logger(subsystem: subsystem, category: category)
         self.prefix = prefix
     }
@@ -14,17 +14,17 @@ public struct BLog {
         return "\(prefix) \(message)"
     }
 
-    func pinfo(_ message: String, _ args: CVarArg...) {
+    public func pinfo(_ message: String, _ args: CVarArg...) {
         let formattedMessage = prefixedMessage(String(format: message, arguments: args))
         logger.info("\(formattedMessage, privacy: .private)")
     }
     
-    func pdebug(_ message: String, _ args: CVarArg...) {
+    public func pdebug(_ message: String, _ args: CVarArg...) {
         let formattedMessage = prefixedMessage(String(format: message, arguments: args))
         logger.debug("\(formattedMessage, privacy: .private)")
     }
     
-    func perror(_ message: String, _ args: CVarArg...) {
+    public func perror(_ message: String, _ args: CVarArg...) {
         let formattedMessage = prefixedMessage(String(format: message, arguments: args))
         logger.error("\(formattedMessage, privacy: .private)")
     }
