@@ -1,7 +1,7 @@
 import os.log
 import Foundation
 
-struct PrefixedLogger {
+public struct BLog {
     private let logger: Logger
     private let prefix: String
     
