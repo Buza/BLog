@@ -1,6 +1,13 @@
 import os.log
 import Foundation
 
+public enum LogLevel {
+    case debug
+    case info
+    case warning
+    case error
+}
+
 public struct BLog {
     private let logger: Logger
     private let prefix: String
