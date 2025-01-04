@@ -50,6 +50,31 @@ logger.pdebug("User tapped on button: %@", "Submit")
 logger.perror("Failed to load data: %@", error.localizedDescription)
 ```
 
+### Wrapping BLog in Your App
+
+You can wrap `BLog` in a custom logger to standardize logging across your app. Here's an example:
+
+```swift
+struct AppLogger {
+    static let shared = BLog(subsystem: "com.example.app", category: "General", prefix: "<AppLogger>")
+
+    static func log(_ message: String, level: LogLevel = .info) {
+        switch level {
+        case .info:
+            shared.pinfo(message)
+        case .warning, .error:
+            shared.perror(message)
+        case .debug:
+            shared.pdebug(message)
+        }
+    }
+}
+
+// Usage
+AppLogger.log("User logged in successfully.", level: .info)
+AppLogger.log("Invalid user credentials.", level: .error)
+```
+
 ## API
 
 ### `BLog`
