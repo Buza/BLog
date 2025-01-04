@@ -1,3 +1,7 @@
+//
+//  BLog - A Simple Swift Logging Utility
+//
+
 import os.log
 import Foundation
 
