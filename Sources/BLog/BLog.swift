@@ -12,7 +12,7 @@ public enum LogLevel {
     case error
 }
 
-public struct BLog {
+public struct BLog: Sendable {
     private let logger: Logger
     private let prefix: String
     
